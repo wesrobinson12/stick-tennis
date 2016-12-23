@@ -87,8 +87,8 @@
 	    this.width = width;
 	    this.height = height;
 	    this.ball = new Ball(ctx, this, this.width / 2, this.height / 2);
-	    this.player = new Player(ctx, this.width - 40, this.height / 2 - 60);
-	    this.computer = new Computer(ctx, 20, this.height / 2 - 60);
+	    this.player = new Player(ctx, this.width - 31, this.height / 2 - 60);
+	    this.computer = new Computer(ctx, 11, this.height / 2 - 60);
 	    this.playerScore = 0;
 	    this.computerScore = 0;
 	  }
@@ -105,7 +105,22 @@
 	    }
 	  }, {
 	    key: 'endGame',
-	    value: function endGame() {}
+	    value: function endGame() {
+	      var message = void 0;
+	
+	      if (this.playerScore === 11) {
+	        message = "You won!";
+	      } else {
+	        message = "You lost.";
+	        $('.end-game').css('color', 'red');
+	      }
+	      $('.end-game').html('Game Over. ' + message);
+	      $('.retry').html('Play again?');
+	      $('.retry').css('border', '1px solid #fff');
+	      $('.retry').css('cursor', 'pointer');
+	
+	      $('.retry').on('click', this.reset.bind(this));
+	    }
 	  }, {
 	    key: 'start',
 	    value: function start() {
@@ -113,9 +128,11 @@
 	      $('.new-game-instructions').html("");
 	      $('.continue').html("");
 	      $('.new-game-box').css('border', 'none');
+	      $('.new-game-box').off('click');
+	      $('.new-game-box').css('cursor', 'auto');
 	      $('.title').html('Stick Tennis');
 	      $('#game-canvas').css('border', '1px solid #fff');
-	      animate(this.step.bind(this));
+	      this.animateId = animate(this.step.bind(this));
 	    }
 	  }, {
 	    key: 'step',
@@ -165,6 +182,23 @@
 	      this.player.render();
 	      this.computer.render();
 	    }
+	  }, {
+	    key: 'reset',
+	    value: function reset() {
+	      $('.end-game').html('');
+	      $('.retry').html('');
+	      $('.retry').css('border', 'none');
+	      $('.retry').css('cursor', 'auto');
+	      $('.retry').off('click');
+	
+	      this.ball.reset();
+	      this.player.reset();
+	      this.computer.reset();
+	      this.playerScore = 0;
+	      this.computerScore = 0;
+	      window.cancelAnimationFrame(this.animateId);
+	      this.start();
+	    }
 	  }]);
 	
 	  return Game;
@@ -190,8 +224,8 @@
 	    this.y = y;
 	    this.game = game;
 	    this.ctx = ctx;
-	    this.xSpeed = 12;
-	    this.ySpeed = 0;
+	    this.xSpeed = -12;
+	    this.ySpeed = 2;
 	    this.radius = 12;
 	  }
 	
@@ -229,7 +263,8 @@
 	          var oldYSpeed = -_this.ySpeed;
 	          _this.xSpeed = 0;
 	          _this.ySpeed = 0;
-	          _this.reset();
+	          _this.x = _this.game.width / 2;
+	          _this.y = _this.game.height / 2;
 	          xRight > _this.game.width ? _this.game.computerScore += 1 : _this.game.playerScore += 1;
 	          window.setTimeout(function () {
 	            _this.xSpeed = oldXSpeed;
@@ -238,7 +273,7 @@
 	        })();
 	      }
 	
-	      if (xRight > playerPaddle.x && yBottom > playerPaddle.y && yTop < playerPaddle.y + playerPaddle.height || xLeft < computerPaddle.x + computerPaddle.width && yBottom > computerPaddle.y && yTop < computerPaddle.y + computerPaddle.height) {
+	      if (xRight > playerPaddle.x && xRight < playerPaddle.x + 12 && yBottom > playerPaddle.y && yTop < playerPaddle.y + playerPaddle.height || xLeft < computerPaddle.x + computerPaddle.width && xLeft > computerPaddle.x + computerPaddle.width - 12 && yBottom > computerPaddle.y && yTop < computerPaddle.y + computerPaddle.height) {
 	        var maxAngle = 3 * Math.PI / 12;
 	        var paddle = this.x < this.game.width / 2 ? computerPaddle : playerPaddle;
 	        var relIntY = paddle.y + paddle.height / 2 - this.y;
@@ -260,6 +295,8 @@
 	    value: function reset() {
 	      this.x = this.game.width / 2;
 	      this.y = this.game.height / 2;
+	      this.xSpeed = -12;
+	      this.ySpeed = 2;
 	    }
 	  }]);
 	
