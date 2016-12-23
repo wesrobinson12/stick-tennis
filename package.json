@@ -5,8 +5,7 @@
   "main": "lib/pong.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "webpack": "webpack --watch",
-    "deploy": "gh-pages -d build"
+    "webpack": "webpack --watch"
   },
   "repository": {
     "type": "git",

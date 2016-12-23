@@ -1,7 +1,7 @@
 module.exports = {
   entry: './lib/pong.js',
   output: {
-    path: './lib/',
+    path: './static/',
     filename: 'bundle.js',
   },
   module: {
