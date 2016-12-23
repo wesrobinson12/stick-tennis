@@ -1,8 +1,7 @@
 module.exports = {
   entry: './lib/pong.js',
   output: {
-    path: './static/',
-    filename: 'bundle.js',
+    filename: './bundle.js',
   },
   module: {
     loaders: [
