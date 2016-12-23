@@ -110,6 +110,7 @@
 	
 	      if (this.playerScore === 11) {
 	        message = "You won!";
+	        $('.end-game').css('color', '#50ea56');
 	      } else {
 	        message = "You lost.";
 	        $('.end-game').css('color', 'red');
