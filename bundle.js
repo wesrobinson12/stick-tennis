@@ -217,6 +217,8 @@
 	
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 	
+	var ballSound = new Audio('assets/audio/ball-hit.wav');
+	
 	var Ball = function () {
 	  function Ball(ctx, game, x, y) {
 	    _classCallCheck(this, Ball);
@@ -275,6 +277,8 @@
 	      }
 	
 	      if (xRight > playerPaddle.x && xRight < playerPaddle.x + 12 && yBottom > playerPaddle.y && yTop < playerPaddle.y + playerPaddle.height || xLeft < computerPaddle.x + computerPaddle.width && xLeft > computerPaddle.x + computerPaddle.width - 12 && yBottom > computerPaddle.y && yTop < computerPaddle.y + computerPaddle.height) {
+	        ballSound.volume = 0.3;
+	        ballSound.play();
 	        var maxAngle = 3 * Math.PI / 12;
 	        var paddle = this.x < this.game.width / 2 ? computerPaddle : playerPaddle;
 	        var relIntY = paddle.y + paddle.height / 2 - this.y;

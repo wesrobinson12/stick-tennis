@@ -17,6 +17,7 @@
 #game-canvas {
   position: relative;
   border-radius: 10px;
+  display: block;
 }
 
 .new-game-box {
