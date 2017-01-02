@@ -24,10 +24,10 @@ In addition, this project will include:
 This app will consist of two screens. An entry screen which prompts the user to continue on to the game, which holds links to my github and linkedin, and the actual game screen. The player paddle will be controlled with the up and down arrow keys.
 
 Entry screen:
-![Alt text](assets/images/entry_screen.jpg)
+![Alt text](../assets/images/entry_screen.jpg)
 
 Game screen:
-![Alt text](assets/images/game_screen.jpg)
+![Alt text](../assets/images/game_screen.jpg)
 
 ## Architecture and Technologies
 
