@@ -81,3 +81,25 @@
 .retry:hover {
   color: #aaa;
 }
+
+.info-box {
+  font-size: 20px;
+  display: flex;
+  justify-content: space-around;
+  margin-top: 220px;
+}
+
+.name {
+  color: #00ffa5;
+  text-decoration: none;
+}
+
+.github {
+  color: #fff;
+  text-decoration: none;
+}
+
+.linkedin {
+  color: #fff;
+  text-decoration: none;
+}
