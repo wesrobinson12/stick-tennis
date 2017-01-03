@@ -14,6 +14,20 @@
   margin: 20px 0;
 }
 
+.restart {
+  font-size: 20px;
+  border-radius: 3px;
+  padding: 10px;
+  color: #fff;
+  float: right;
+  margin-right: 10px;
+  margin-bottom: 10px;
+}
+
+.restart:hover {
+  color: #aaa;
+}
+
 #game-canvas {
   position: relative;
   border-radius: 10px;
@@ -102,4 +116,10 @@
 .linkedin {
   color: #fff;
   text-decoration: none;
+}
+
+.group {
+  display: block;
+  clear: both;
+  content: "";
 }

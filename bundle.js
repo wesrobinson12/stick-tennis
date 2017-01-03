@@ -125,13 +125,18 @@
 	  }, {
 	    key: 'start',
 	    value: function start() {
-	      $('.new-game-title').html("");
-	      $('.new-game-instructions').html("");
-	      $('.continue').html("");
+	      $('.new-game-title').html('');
+	      $('.new-game-instructions').html('');
+	      $('.continue').html('');
+	
 	      $('.new-game-box').css('border', 'none');
 	      $('.new-game-box').off('click');
 	      $('.new-game-box').css('cursor', 'auto');
 	      $('.title').html('Stick Tennis');
+	      $('.restart').html('restart');
+	      $('.restart').css('border', '1px solid #fff');
+	      $('.restart').css('cursor', 'pointer');
+	      $('.restart').on('click', this.reset.bind(this));
 	      $('#game-canvas').css('border', '1px solid #fff');
 	      this.animateId = animate(this.step.bind(this));
 	    }
@@ -198,7 +203,7 @@
 	      this.playerScore = 0;
 	      this.computerScore = 0;
 	      window.cancelAnimationFrame(this.animateId);
-	      this.start();
+	      this.start.bind(this);
 	    }
 	  }]);
 	
