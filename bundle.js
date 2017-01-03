@@ -89,8 +89,8 @@
 	    this.ball = new Ball(ctx, this, this.width / 2, this.height / 2);
 	    this.player = new Player(ctx, this.width - 31, this.height / 2 - 60);
 	    this.computer = new Computer(ctx, 11, this.height / 2 - 60);
-	    this.playerScore = 0;
-	    this.computerScore = 0;
+	    this.playerScore = 10;
+	    this.computerScore = 10;
 	  }
 	
 	  _createClass(Game, [{
@@ -148,7 +148,7 @@
 	      if (this.playerScore === 11 || this.computerScore === 11) {
 	        this.endGame();
 	      } else {
-	        animate(this.step.bind(this));
+	        this.animateId = animate(this.step.bind(this));
 	      }
 	    }
 	  }, {
@@ -196,14 +196,13 @@
 	      $('.retry').css('border', 'none');
 	      $('.retry').css('cursor', 'auto');
 	      $('.retry').off('click');
-	
 	      this.ball.reset();
 	      this.player.reset();
 	      this.computer.reset();
 	      this.playerScore = 0;
 	      this.computerScore = 0;
 	      window.cancelAnimationFrame(this.animateId);
-	      this.start.bind(this);
+	      this.start();
 	    }
 	  }]);
 	
@@ -295,7 +294,8 @@
 	          this.xSpeed = -this.xSpeed;
 	          this.ySpeed = -this.ySpeed;
 	        } else {
-	          this.xSpeed = direction * 12 * Math.cos(bounceAngle);
+	          // this.xSpeed = (direction * 12 * Math.cos(bounceAngle));
+	          this.xSpeed = -this.xSpeed;
 	          this.ySpeed = 12 * -Math.sin(bounceAngle);
 	        }
 	      }
