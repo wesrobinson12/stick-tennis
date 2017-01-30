@@ -31,3 +31,15 @@ To transition between game screens I used jQuery to manipulate the DOM and adjus
 The AI computer paddle speed is determined by the position of the ball in relation to the center of the paddle.  If the center of the ball is within 5 pixels of the center of the paddle, the paddle moves at the exact same speed as the ball.  Once the ball moves outside of this area, the paddle moves 5 pixels per frame along the y-axis.  
 
 Last but not least, I used the HTML5 Canvas Element to handle rendering of the game court and movement of the ball and paddles.  Using a frame rate of 60fps creates a clear and smooth visual aesthetic.  At each step, the ball moves 12 pixels along the x-axis and, as demonstrated above, a calculated amount of pixels along the y-axis.   
+
+## Future Direction for the Project
+
+In addition to the features already implemented, I plan to continue work on this project.  The next steps for Stick Tennis are outlined below.
+
+### Two Player
+
+Add in the option to have two human players instead of the forced computer AI.
+
+### Difficulty Settings
+
+Create an easy, medium, and hard setting that dictates speed and the ball and paddles.  Another option would be to adjust maximum bounce angle.  
